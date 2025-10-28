@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FANTAKL - Kings League Fantasy Football</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(180deg, #000000 0%, #1a1200 100%);
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 60px;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .brand-name {
+            font-size: 72px;
+            font-weight: 500;
+            margin-bottom: 40px;
+            background: linear-gradient(180deg, #ffffff 0%, #888888 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .brand-name sup {
+            font-size: 36px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 400;
+            margin-bottom: 30px;
+            line-height: 1.3;
+            background: linear-gradient(180deg, #ffffff 0%, #aaaaaa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            font-weight: 300;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        .hero-details {
+            font-size: 18px;
+            font-weight: 300;
+            margin-bottom: 50px;
+            opacity: 0.8;
+        }
+
+        /* CTA Buttons */
+        .cta-buttons {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin-bottom: 100px;
+        }
+
+        .btn {
+            padding: 18px 50px;
+            font-size: 18px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            display: inline-block;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #FFA500;
+            color: #FFA500;
+        }
+
+        .btn-outline:hover {
+            background: #FFA500;
+            color: #000000;
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #FFA500, #FF8C00);
+            border: none;
+            color: #000000;
+            box-shadow: 0 10px 30px rgba(255, 165, 0, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(255, 165, 0, 0.4);
+        }
+
+        /* Screenshots Section */
+        .screenshots {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            padding: 0 20px;
+        }
+
+        .screenshot-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .screenshot-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .screenshot-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .brand-name {
+                font-size: 48px;
+                letter-spacing: 4px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero-subtitle {
+                font-size: 18px;
+            }
+
+            .hero-details {
+                font-size: 16px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .screenshots {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .brand-name {
+                font-size: 36px;
+            }
+
+            .hero h1 {
+                font-size: 24px;
+            }
+        }
+
+        /* Rules Section Styles */
+        .rules-section {
+            max-width: 900px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 42px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 50px;
+            background: linear-gradient(180deg, #ffffff 0%, #aaaaaa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .rule-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .intro-card {
+            background: linear-gradient(135deg, rgba(255, 165, 0, 0.1), rgba(255, 140, 0, 0.05));
+            border: 1px solid rgba(255, 165, 0, 0.3);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .card-header .icon {
+            font-size: 28px;
+        }
+
+        .card-header h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .card-description {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        .rule-section {
+            margin-bottom: 50px;
+        }
+
+        .subsection-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .subsection-title-text {
+            background: linear-gradient(180deg, #ffffff 0%, #bbbbbb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subsection-title .icon {
+            font-size: 32px;
+        }
+
+        .icon.green { color: #4ade80; }
+        .icon.red { color: #ef4444; }
+        .icon.orange { color: #fb923c; }
+        .icon.blue { color: #60a5fa; }
+        .icon.gold { color: #fbbf24; }
+
+        .score-grid {
+            display: grid;
+            gap: 12px;
+        }
+
+        .score-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .score-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(5px);
+        }
+
+        .score-icon {
+            font-size: 32px;
+            flex-shrink: 0;
+        }
+
+        .score-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .score-info strong {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .score-subtitle {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .score-value {
+            font-size: 22px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .score-value.green { color: #4ade80; }
+        .score-value.red { color: #ef4444; }
+        .score-value.orange { color: #fb923c; }
+        .score-value.blue { color: #60a5fa; }
+        .score-value.yellow { color: #fbbf24; }
+
+        .president-scores {
+            margin-top: 20px;
+        }
+
+        .president-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 12px 0;
+        }
+
+        .president-label {
+            flex: 1;
+            font-size: 16px;
+        }
+
+        .divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 12px 0;
+        }
+
+        /* Wildcard Section */
+        .wildcard-card h4 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .wildcard-card h5 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #fbbf24;
+            margin-bottom: 12px;
+        }
+
+        .wildcard-features {
+            margin: 24px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 12px;
+            align-items: start;
+        }
+
+        .feature-icon {
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .feature-icon.green { color: #4ade80; }
+        .feature-icon.blue { color: #60a5fa; }
+
+        .feature-item strong {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .feature-item p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            margin: 0;
+        }
+
+        .wildcard-formation {
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .formation-box {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .formation-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .formation-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            width: fit-content;
+            margin-bottom: 8px;
+        }
+
+        .formation-badge.blue {
+            background: rgba(96, 165, 250, 0.2);
+            color: #60a5fa;
+        }
+
+        .formation-badge.gold {
+            background: rgba(251, 191, 36, 0.2);
+            color: #fbbf24;
+        }
+
+        .formation-item strong {
+            font-size: 15px;
+        }
+
+        .formation-item p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin: 0;
+        }
+
+        .wildcard-advantage {
+            background: rgba(74, 222, 128, 0.1);
+            border: 1px solid rgba(74, 222, 128, 0.3);
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            gap: 12px;
+            align-items: start;
+            margin-top: 20px;
+        }
+
+        .advantage-icon {
+            font-size: 24px;
+            color: #4ade80;
+        }
+
+        .wildcard-advantage strong {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .wildcard-advantage p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+            margin: 0;
+        }
+
+        /* Formula Box */
+        .formula-box {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .formula-item {
+            margin-bottom: 16px;
+        }
+
+        .formula-item strong {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .formula-item p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin: 0;
+        }
+
+        .formula-rule {
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .formula-rule strong {
+            color: #fbbf24;
+            font-size: 16px;
+        }
+
+        /* Examples Grid */
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .example-item {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 12px 16px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .example-item strong {
+            color: #fbbf24;
+            font-size: 16px;
+        }
+
+        .warning-box {
+            background: rgba(251, 146, 60, 0.1);
+            border: 1px solid rgba(251, 146, 60, 0.3);
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #fb923c;
+            font-style: italic;
+        }
+
+        /* Info Card */
+        .info-card {
+            background: linear-gradient(135deg, rgba(96, 165, 250, 0.1), rgba(59, 130, 246, 0.05));
+            border: 1px solid rgba(96, 165, 250, 0.3);
+        }
+
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 16px 0 0 0;
+        }
+
+        .info-list li {
+            padding: 8px 0 8px 24px;
+            position: relative;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .info-list li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #60a5fa;
+            font-size: 20px;
+        }
+
+        /* Responsive rules */
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 32px;
+            }
+
+            .subsection-title {
+                font-size: 24px;
+            }
+
+            .examples-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .formation-box {
+                padding: 16px;
+            }
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: linear-gradient(180deg, #0a0a0a 0%, #1a1200 100%);
+            margin: 2% auto;
+            padding: 0;
+            border: 1px solid rgba(255, 165, 0, 0.3);
+            border-radius: 20px;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            padding: 24px 30px;
+            background: linear-gradient(135deg, rgba(255, 165, 0, 0.1), rgba(255, 140, 0, 0.05));
+            border-bottom: 1px solid rgba(255, 165, 0, 0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .modal-title {
+            font-size: 32px;
+            font-weight: 600;
+            margin: 0;
+            background: linear-gradient(180deg, #ffffff 0%, #aaaaaa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .close-btn {
+            color: #aaa;
+            font-size: 36px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: none;
+            border: none;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .close-btn:hover,
+        .close-btn:focus {
+            color: #FFA500;
+            background: rgba(255, 165, 0, 0.1);
+        }
+
+        .modal-body {
+            padding: 30px;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        /* Custom scrollbar for modal */
+        .modal-body::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .modal-body::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+
+        .modal-body::-webkit-scrollbar-thumb {
+            background: rgba(255, 165, 0, 0.5);
+            border-radius: 10px;
+        }
+
+        .modal-body::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 165, 0, 0.7);
+        }
+
+        /* Hide rules section from main page */
+        .rules-section {
+            display: none;
+        }
+
+        /* Modal responsive */
+        @media (max-width: 768px) {
+            .modal-content {
+                width: 95%;
+                margin: 5% auto;
+                max-height: 85vh;
+            }
+
+            .modal-header {
+                padding: 20px;
+            }
+
+            .modal-title {
+                font-size: 24px;
+            }
+
+            .modal-body {
+                padding: 20px;
+            }
+
+            .close-btn {
+                font-size: 28px;
+                width: 36px;
+                height: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <!-- Replace src with your logo URL -->
+                <img src="FANTAKL App Icon fixed.png" alt="FantaKL Logo">
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <h2 class="brand-name">FANTAKL</h2>
+            <h1>Crea la tua Lega e sfida i tuoi amici!</h1>
+            
+            <p class="hero-subtitle">Leghe da 6 o da 8 partecipanti.</p>
+            <p class="hero-details">
+                16 Elementi: 2 Wildcard, 1 Presidente, 13 Giocatori e i Voti sono LIVE!<br>
+                Scopri il regolamento completo
+            </p>
+
+            <div class="cta-buttons">
+                <button id="openRulesBtn" class="btn btn-outline" type="button">REGOLAMENTO</button>
+                <a href="#" class="btn btn-primary">SCARICA L'APP</a>
+            </div>
+        </section>
+
+        <!-- Rules Modal -->
+        <div id="rulesModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">📋 Regolamento</h2>
+                    <button class="close-btn" id="closeRulesBtn" type="button">&times;</button>
+                </div>
+                <div class="modal-body">
+        <!-- Rules Section -->
+        <section id="regolamento" class="rules-section" style="display: block; margin: 0; padding: 0;">
+            <h2 class="section-title">📋 Regolamento Completo</h2>
+            
+            <!-- Intro Card -->
+            <div class="rule-card intro-card">
+                <div class="card-header">
+                    <span class="icon">ℹ️</span>
+                    <h3>Sistema di Punteggio</h3>
+                </div>
+                <p class="card-description">
+                    I punteggi sono calcolati in base alle prestazioni reali dei giocatori nella Kings League. 
+                    Ogni azione ha un valore specifico che contribuisce al punteggio finale.
+                </p>
+            </div>
+
+            <!-- Bonus Giocatori -->
+            <div class="rule-section">
+                <h3 class="subsection-title">
+                    <span class="icon green">➕</span>
+                    <span class="subsection-title-text">Bonus Giocatori</span>
+                </h3>
+                
+                <div class="score-grid">
+                    <div class="score-item">
+                        <span class="score-icon">⚽</span>
+                        <div class="score-info">
+                            <strong>Gol Normale</strong>
+                            <span class="score-subtitle">Gol in azione</span>
+                        </div>
+                        <span class="score-value green">+1.5</span>
+                    </div>
+
+                    <div class="score-item">
+                        <span class="score-icon">🔥</span>
+                        <div class="score-info">
+                            <strong>Gol Doppio</strong>
+                            <span class="score-subtitle">Gol nei minuti finali o fase "Gol Doppio"</span>
+                        </div>
+                        <span class="score-value orange">+3.0</span>
+                    </div>
+
+                    <div class="score-item">
+                        <span class="score-icon">🎯</span>
+                        <div class="score-info">
+                            <strong>Rigore Segnato</strong>
+                            <span class="score-subtitle">Durante la partita</span>
+                        </div>
+                        <span class="score-value green">+1.5</span>
+                    </div>
+
+                    <div class="score-item">
+                        <span class="score-icon">🤝</span>
+                        <div class="score-info">
+                            <strong>Assist</strong>
+                            <span class="score-subtitle">Passaggio vincente</span>
+                        </div>
+                        <span class="score-value green">+0.5</span>
+                    </div>
+
+                    <div class="score-item">
+                        <span class="score-icon">🛡️</span>
+                        <div class="score-info">
+                            <strong>Clean Sheet</strong>
+                            <span class="score-subtitle">Solo portieri - nessun gol subito</span>
+                        </div>
+                        <span class="score-value blue">+3.0</span>
+                    </div>
+
+                    <div class="score-item">
+                        <span class="score-icon">🎯</span>
+                        <div class="score-info">
+                            <strong>Shootout Segnato</strong>
+                            <span class="score-subtitle">Rigori ai supplementari</span>
+                        </div>
+                        <span class="score-value green">+0.5</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Malus Giocatori -->
+            <div class="rule-section">
+                <h3 class="subsection-title">
+                    <span class="icon red">➖</span>
+                    <span class="subsection-title-text">Malus Giocatori</span>
+                </h3>
+                
+                <div class="score-grid">
+                    <div class="score-item">
+                        <span class="score-icon">🟨</span>
+                        <div class="score-info">
+                            <strong>Cartellino Giallo</strong>
+                        </div>
+                        <span class="score-value yellow">-0.5</span>
+                    </div>
+
+                    <div class="score-item">
+                        <span class="score-icon">🟥</span>
+                        <div class="score-info">
+                            <strong>Cartellino Rosso</strong>
+                        </div>
+                        <span class="score-value red">-2.0</span>
+                    </div>
+
+                    <div class="score-item">
+                        <span class="score-icon">❌</span>
+                        <div class="score-info">
+                            <strong>Rigore Sbagliato</strong>
+                            <span class="score-subtitle">Durante la partita</span>
+                        </div>
+                        <span class="score-value red">-1.5</span>
+                    </div>
+
+                    <div class="score-item">
+                        <span class="score-icon">⭕</span>
+                        <div class="score-info">
+                            <strong>Shootout Sbagliato</strong>
+                            <span class="score-subtitle">Rigori ai supplementari</span>
+                        </div>
+                        <span class="score-value red">-0.5</span>
+                    </div>
+
+                    <div class="score-item">
+                        <span class="score-icon">😱</span>
+                        <div class="score-info">
+                            <strong>Autogol</strong>
+                        </div>
+                        <span class="score-value red">-2.0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Malus Portieri -->
+            <div class="rule-section">
+                <h3 class="subsection-title">
+                    <span class="icon orange">🧤</span>
+                    <span class="subsection-title-text">Malus Portieri</span>
+                </h3>
+                
+                <div class="score-grid">
+                    <div class="score-item">
+                        <span class="score-icon">⚽</span>
+                        <div class="score-info">
+                            <strong>Gol Subito</strong>
+                            <span class="score-subtitle">Per ogni gol subito dal portiere</span>
+                        </div>
+                        <span class="score-value orange">-1.0</span>
+                    </div>
+
+                    <div class="score-item">
+                        <span class="score-icon">🚫</span>
+                        <div class="score-info">
+                            <strong>Shootout Subito</strong>
+                            <span class="score-subtitle">Rigore subito durante gli shootout</span>
+                        </div>
+                        <span class="score-value orange">-0.5</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Presidenti -->
+            <div class="rule-section">
+                <h3 class="subsection-title">
+                    <span class="icon gold">👑</span>
+                    <span class="subsection-title-text">Punteggio Presidenti</span>
+                </h3>
+                
+                <div class="rule-card">
+                    <p class="card-description">I presidenti guadagnano punti in base al rigore presidenziale:</p>
+                    
+                    <div class="president-scores">
+                        <div class="president-item">
+                            <span class="score-icon">✅</span>
+                            <span class="president-label">Rigore Presidenziale Segnato</span>
+                            <span class="score-value green">+4.0</span>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="president-item">
+                            <span class="score-icon">❌</span>
+                            <span class="president-label">Rigore Presidenziale Sbagliato</span>
+                            <span class="score-value red">-4.0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sistema Wildcard -->
+            <div class="rule-section">
+                <h3 class="subsection-title">
+                    <span class="icon gold">⭐</span>
+                    <span class="subsection-title-text">Sistema Wildcard</span>
+                </h3>
+                
+                <div class="rule-card wildcard-card">
+                    <h4>Cos'è la Wildcard?</h4>
+                    <p>Le Wildcard sono 2 giocatori speciali che hai nella tua rosa con caratteristiche uniche:</p>
+                    
+                    <div class="wildcard-features">
+                        <div class="feature-item">
+                            <span class="feature-icon green">✓</span>
+                            <div>
+                                <strong>Sono completamente GRATUITE</strong>
+                                <p>Non consumano crediti della tua rosa</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <span class="feature-icon blue">👥</span>
+                            <div>
+                                <strong>NON sono univoche</strong>
+                                <p>Più squadre possono avere le stesse wildcard</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="wildcard-formation">
+                        <h5>⭐ Come funzionano in formazione</h5>
+                        <p>Hai sempre 7 GIOCATORI da schierare secondo il modulo scelto. 
+                        Le 2 Wildcard sono OPZIONALI e puoi decidere liberamente se includerle o no:</p>
+                        
+                        <div class="formation-box">
+                            <div class="formation-item">
+                                <span class="formation-badge blue">Obbligatorio</span>
+                                <strong>7 Giocatori</strong>
+                                <p>Secondo il modulo (3-2-1 / 2-2-2 / 2-3-1)</p>
+                            </div>
+                            <div class="formation-item">
+                                <span class="formation-badge gold">Opzionale</span>
+                                <strong>0-2 Wildcard</strong>
+                                <p>Puoi schierarne 0, 1 o 2</p>
+                            </div>
+                        </div>
+
+                        <div class="wildcard-advantage">
+                            <span class="advantage-icon">🔄</span>
+                            <div>
+                                <strong>Cambiabili liberamente</strong>
+                                <p>Puoi cambiare le Wildcard che scegli di schierare in qualsiasi momento 
+                                durante l'inserimento della formazione, senza vincoli!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sistema Gol Virtuali -->
+            <div class="rule-section">
+                <h3 class="subsection-title">
+                    <span class="icon blue">🧮</span>
+                    <span class="subsection-title-text">Sistema Gol Virtuali</span>
+                </h3>
+                
+                <div class="rule-card">
+                    <h4>Formula di calcolo:</h4>
+                    
+                    <div class="formula-box">
+                        <div class="formula-item">
+                            <strong>Punteggio Minimo: 42 punti</strong>
+                            <p>(7 giocatori × 6.0 voto base)</p>
+                        </div>
+                        <div class="formula-rule">
+                            <strong>Ogni 3 punti sopra 42 → +1 gol virtuale</strong>
+                        </div>
+                    </div>
+
+                    <h4>Esempi:</h4>
+                    <div class="examples-grid">
+                        <div class="example-item">42 punti → <strong>1 gol</strong></div>
+                        <div class="example-item">45 punti → <strong>2 gol</strong></div>
+                        <div class="example-item">48 punti → <strong>3 gol</strong></div>
+                        <div class="example-item">51 punti → <strong>4 gol</strong></div>
+                        <div class="example-item">54 punti → <strong>5 gol</strong></div>
+                        <div class="example-item">60 punti → <strong>7 gol</strong></div>
+                        <div class="example-item">66 punti → <strong>9 gol</strong></div>
+                    </div>
+
+                    <div class="warning-box">
+                        ⚠️ Se il punteggio è inferiore a 42, si ottengono 0 gol virtuali
+                    </div>
+                </div>
+            </div>
+
+            <!-- Note Finali -->
+            <div class="rule-card info-card">
+                <div class="card-header">
+                    <span class="icon">💡</span>
+                    <h3>Note Importanti</h3>
+                </div>
+                <ul class="info-list">
+                    <li>Il voto base dei giocatori varia da 1.0 a 10.0</li>
+                    <li>Il punteggio finale include: voto base + bonus - malus</li>
+                    <li>I presidenti NON vanno schierati, il loro punteggio è automatico</li>
+                    <li>In caso di pareggio di gol, vince chi ha più punti totali</li>
+                </ul>
+            </div>
+        </section>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screenshots -->
+        <section class="screenshots">
+            <div class="screenshot-item">
+                <img src="IMG_7177-portrait.png" alt="Dashboard Home">
+            </div>
+
+            <div class="screenshot-item">
+                <img src="IMG_7178-portrait.png" alt="Lista Giocatori">
+            </div>
+
+            <div class="screenshot-item">
+                <img src="IMG_7179-portrait.png" alt="Calendario">
+            </div>
+
+            <div class="screenshot-item">
+                <img src="IMG_7180-portrait.png" alt="Dettaglio Partita">
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Modal functionality
+            const modal = document.getElementById('rulesModal');
+            const openBtn = document.getElementById('openRulesBtn');
+            const closeBtn = document.getElementById('closeRulesBtn');
+
+            if (!modal || !openBtn || !closeBtn) {
+                console.error('Modal elements not found!', {modal, openBtn, closeBtn});
+                return;
+            }
+
+            // Open modal
+            openBtn.onclick = function() {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            }
+
+            // Close modal
+            closeBtn.onclick = function() {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto'; // Re-enable scrolling
+            }
+
+            // Close modal when clicking outside
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            }
+
+            // Close modal with ESC key
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && modal.classList.contains('active')) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

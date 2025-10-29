@@ -16,7 +16,7 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(180deg, #000000 0%, #1a1200 100%);
+            background: linear-gradient(180deg, #000000 0%, #2d1a00 50%, #4a2f00 100%);
             color: #ffffff;
             min-height: 100vh;
         }
@@ -24,7 +24,7 @@
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 20px 20px 40px 20px;
         }
 
         /* Header */
@@ -32,7 +32,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 60px;
+            margin-bottom: 30px;
         }
 
         .logo {
@@ -52,12 +52,13 @@
         .hero {
             text-align: center;
             margin-bottom: 80px;
+            margin-top: 0;
         }
 
         .brand-name {
             font-size: 72px;
             font-weight: 500;
-            margin-bottom: 40px;
+            margin-bottom: 25px;
             background: linear-gradient(180deg, #ffffff 0%, #888888 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -71,7 +72,7 @@
         .hero h1 {
             font-size: 48px;
             font-weight: 400;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             line-height: 1.3;
             background: linear-gradient(180deg, #ffffff 0%, #aaaaaa 100%);
             -webkit-background-clip: text;
@@ -89,7 +90,7 @@
         .hero-details {
             font-size: 18px;
             font-weight: 300;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
             opacity: 0.8;
         }
 
@@ -140,9 +141,10 @@
         /* Screenshots Section */
         .screenshots {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
             padding: 0 20px;
+            align-items: center;
         }
 
         .screenshot-item {
@@ -155,6 +157,38 @@
 
         .screenshot-item:hover {
             transform: translateY(-10px);
+        }
+
+        .screenshot-item:nth-child(1) {
+            transform: translateY(0);
+        }
+
+        .screenshot-item:nth-child(2) {
+            transform: translateY(40px);
+        }
+
+        .screenshot-item:nth-child(3) {
+            transform: translateY(-20px);
+        }
+
+        .screenshot-item:nth-child(4) {
+            transform: translateY(30px);
+        }
+
+        .screenshot-item:nth-child(1):hover {
+            transform: translateY(-10px);
+        }
+
+        .screenshot-item:nth-child(2):hover {
+            transform: translateY(30px);
+        }
+
+        .screenshot-item:nth-child(3):hover {
+            transform: translateY(-30px);
+        }
+
+        .screenshot-item:nth-child(4):hover {
+            transform: translateY(20px);
         }
 
         .screenshot-item img {
@@ -196,6 +230,17 @@
             .screenshots {
                 grid-template-columns: 1fr;
                 gap: 30px;
+            }
+
+            .screenshot-item:nth-child(1),
+            .screenshot-item:nth-child(2),
+            .screenshot-item:nth-child(3),
+            .screenshot-item:nth-child(4) {
+                transform: translateY(0) !important;
+            }
+
+            .screenshot-item:hover {
+                transform: translateY(-10px) !important;
             }
         }
 
@@ -768,7 +813,6 @@
         <!-- Header -->
         <header class="header">
             <div class="logo">
-                <!-- Replace src with your logo URL -->
                 <img src="FANTAKL App Icon fixed.png" alt="FantaKL Logo">
             </div>
         </header>
@@ -1134,13 +1178,13 @@
             // Open modal
             openBtn.onclick = function() {
                 modal.classList.add('active');
-                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                document.body.style.overflow = 'hidden';
             }
 
             // Close modal
             closeBtn.onclick = function() {
                 modal.classList.remove('active');
-                document.body.style.overflow = 'auto'; // Re-enable scrolling
+                document.body.style.overflow = 'auto';
             }
 
             // Close modal when clicking outside
@@ -1156,19 +1200,6 @@
                 if (event.key === 'Escape' && modal.classList.contains('active')) {
                     modal.classList.remove('active');
                     document.body.style.overflow = 'auto';
-                }
-            });
-        });
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth'
-                    });
                 }
             });
         });
